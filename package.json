@@ -40,6 +40,7 @@
         "vue-jest": "^3.0.5",
         "vue-router": "^3.1.5",
         "vue-template-compiler": "^2.6.10",
+        "vue-toasted": "^1.1.27",
         "vuetify": "^2.2.12"
     }
 }

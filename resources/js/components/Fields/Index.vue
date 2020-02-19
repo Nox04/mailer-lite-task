@@ -126,7 +126,7 @@
         });
         if (response) {
           await this.requestData();
-          this.status = validStatus.idle;
+          this.showMessage('Subscriber saved successfully', true);
         }
       },
       create() {

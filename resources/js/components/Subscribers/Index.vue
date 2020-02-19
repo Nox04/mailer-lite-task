@@ -154,10 +154,10 @@ export default {
         method,
         url,
         data: this.editedItem
-      });
+      }).catch((e) => this.showMessage(e, false));
       if (response) {
         await this.requestData();
-        this.status = validStatus.idle;
+        this.showMessage('Subscriber saved successfully', true);
       }
     },
     create() {

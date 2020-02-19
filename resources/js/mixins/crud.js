@@ -45,6 +45,11 @@ export default {
       this.status = validStatus.loading;
       await axios.delete(`${apiDomain}/${this.endPoint}/${item.id}`);
       await this.requestData();
+      this.showMessage('Subscriber deleted successfully', true);
+    },
+    showMessage(message, success) {
+      this.status = validStatus.idle;
+      this.$toasted.show(`${success ? '✅' : '🚨️' } ${message}`);
     },
     close() {
       this.status = validStatus.idle;

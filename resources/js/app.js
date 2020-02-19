@@ -1,11 +1,11 @@
-require('./bootstrap');
-
 import Vue from 'vue';
 import router from './router';
 import App from './components/App';
 import vuetify from './plugins/vuetify';
+require('./bootstrap');
+require('./plugins/toasted');
 
-const app = new Vue({
+new Vue({
   router,
   vuetify,
   ...App
