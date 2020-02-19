@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FieldRequest;
 use App\Http\Resources\FieldResource;
 use App\Models\Field;
-use App\Models\Subscriber;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,11 +28,10 @@ class FieldController extends Controller
      * Store a newly created resource in storage.
      *
      * @param FieldRequest $request
-     * @param Subscriber $subscriber
      * @return FieldResource
      * @throws Exception
      */
-    public function store(FieldRequest $request, Subscriber $subscriber)
+    public function store(FieldRequest $request)
     {
         $field = new Field($request->validated());
         if (!$field->save()) {

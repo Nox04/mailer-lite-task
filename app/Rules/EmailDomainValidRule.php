@@ -27,6 +27,6 @@ class EmailDomainValidRule implements Rule
      */
     public function message(): string
     {
-        return 'Please enter an existing email address.';
+        return 'This email address does not exist. Please use an existent email.';
     }
 }

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Enum\Laravel\HasEnums;
 
+/**
+ * @property int id
+ * @property FieldType type
+ */
 class Field extends Model
 {
     use HasEnums;

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Enum\Laravel\HasEnums;
 
+/**
+ * @property int id
+ * @property SubscriberState state
+ */
 class Subscriber extends Model
 {
     use HasEnums;

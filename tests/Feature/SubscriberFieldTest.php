@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Enums\FieldType;
 use App\Enums\SubscriberState;
 use App\Models\Field;
 use App\Models\Subscriber;
@@ -59,14 +58,7 @@ class SubscriberFieldTest extends TestCase
     {
         $response = $this->post('/api/subscriber', [
             'name' => 'John Doe',
-            'email' => 'johndoe@mailerlite.com',
-            'fields' => [
-                [
-                    'title' => 'Field',
-                    'type' => FieldType::STRING(),
-                    'value' => 'value'
-                ]
-            ]
+            'email' => 'johndoe@mailerlite.com'
         ]);
         $response->assertStatus(201);
 
@@ -92,7 +84,7 @@ class SubscriberFieldTest extends TestCase
         /** @var Field $field */
         $field = factory(Field::class, 1)->create()->first();
 
-        $subscriber->fields()->attach($field);
+        $subscriber->fields()->attach($field->id, ['value' => 'test']);
 
         $response = $this->patch('/api/subscriber/' . $subscriber->getKey(), [
             'name' => 'John Doe',
@@ -128,7 +120,7 @@ class SubscriberFieldTest extends TestCase
         /** @var Field $field */
         $field = factory(Field::class, 1)->create()->first();
 
-        $subscriber->fields()->attach($field);
+        $subscriber->fields()->attach($field->id, ['value' => 'test']);
 
         $response = $this->delete('/api/subscriber/' . $subscriber->getKey());
 

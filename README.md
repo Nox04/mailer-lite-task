@@ -1,13 +1,13 @@
 # Mailer Lite Task
 
-##Stack
+## Stack
  - PHP 7.3
  - MySQL 5.7
  - Node 10
  - Docker
  - Laravel 6
- - Vue.js 2
- - Vuetify 2
+ - Vue.js 2.5
+ - Vuetify 2.2
 
 ## Installation
 
@@ -20,17 +20,9 @@
 
 `http://127.0.0.1:8080/api`
 
-## Frontend
+## Frontend URL
 
-### URL 
 `http://127.0.0.1:8080`
-
-### Features
-
-- Night Mode.
-- 100% accessible for keyboard, mouse and voice assistant technologies.
-- Focus traps on modals.
-- Server side pagination for all datatables.
 
 ## Backend Tests
 

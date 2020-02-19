@@ -7,7 +7,7 @@
         <meta name="api-domain" content="{{ config('app.url').'/api' }}">
         <title>Mailer Lite Task</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     </head>
