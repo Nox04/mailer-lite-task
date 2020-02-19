@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\FieldType;
 use App\Enums\SubscriberState;
 use App\Models\Field;
 use App\Models\Subscriber;
@@ -22,11 +23,26 @@ class SubscriberTest extends TestCase
     /**
      * @test
      */
+    public function testIndex()
+    {
+        factory(Subscriber::class, 50)->create();
+
+        $response = $this->get('/api/subscriber');
+
+        $response->assertStatus(200)->assertJsonCount(10, 'data');
+
+        $this->assertEquals(50, Arr::get($response->json('data'), '0.id'));
+
+    }
+
+    /**
+     * @test
+     */
     public function testPostSubscriber()
     {
         $response = $this->post('/api/subscriber', [
-            'name' => 'John Doe',
-            'email' => 'johndoe@mailerlite.com'
+            'name' => 'Juan Angarita',
+            'email' => 'juan@mailerlite.com'
         ]);
         $response->assertStatus(201);
 
@@ -51,22 +67,30 @@ class SubscriberTest extends TestCase
 
         /** @var Field $field */
         $field = factory(Field::class, 1)->create()->first();
+        $field->type = FieldType::STRING();
+        $field->save();
 
         $subscriber->fields()->attach($field->id, ['value' => 'test']);
 
         $response = $this->patch('/api/subscriber/' . $subscriber->getKey(), [
-            'name' => 'John Doe',
-            'email' => 'johndoe@mailerlite.com',
-            'fields' => []
+            'name' => 'Juan Angarita',
+            'email' => 'juan@mailerlite.com',
+            'fields' => collect([$field->id => 'test'])
         ]);
 
         $response->assertStatus(200);
 
+        $field->value = 'test';
+
         $response->assertJsonFragment([
-            'name' => 'John Doe',
-            'email' => 'johndoe@mailerlite.com',
-            'fields' => []
+            'name' => 'Juan Angarita',
+            'email' => 'juan@mailerlite.com'
         ]);
+
+        $this->assertTrue(
+            collect($response->decodeResponseJson('data.fields'))
+                ->pluck('value')->contains('test')
+        );
 
         $response->assertJsonStructure(['data' => [
             'name',
