@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bef86329-ece7-492a-9112-c2116658f439" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/compat-data/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/generator/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/helper-compilation-targets/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/helper-create-regexp-features-plugin/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/plugin-transform-runtime/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/@babel/traverse/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/adjust-sourcemap-loader/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/anymatch/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/babel-merge/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/base/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/bonjour/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/cacache/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/caller-callsite/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/caniuse-api/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/cliui/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/color-string/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/compression/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/content-disposition/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/convert-source-map/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/copy-concurrently/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/core-js-compat/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/cosmiconfig/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/create-hash/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/create-hmac/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/css-selector-tokenizer/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/define-property/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/del/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/diffie-hellman/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/dom-serializer/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/espree/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/extglob/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/extract-text-webpack-plugin/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/flat-cache/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/glob-parent/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/global-prefix/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/globby/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/has-values/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/html-loader/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/html-minifier/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/http-errors/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/http-proxy/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/icss-utils/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/imagemin/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/inquirer/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/invariant/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/is-number/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/jest-worker/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/js-yaml/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/make-dir/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/memory-fs/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/micromatch/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/minipass/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/mixin-deep/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/mkdirp/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/move-concurrently/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/nanomatch/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/node-notifier/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/object-copy/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/object.omit/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/path-type/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/pbkdf2/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/portfinder/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-calc/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-colormin/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-merge-rules/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-minify-params/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-extract-imports/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-local-by-default/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-scope/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-values/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-normalize-unicode/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-normalize-url/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-reduce-initial/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/postcss-svgo/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/proxy-addr/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/pumpify/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/readable-stream/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/recast/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/regex-not/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/regexpu-core/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/regjsparser/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/resolve-dir/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/rework/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/send/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/serve-index/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/simple-swizzle/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon-node/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon-util/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/sockjs-client/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/sockjs/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/source-map-resolve/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/spdy-transport/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/spdy/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/split-string/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/string-width/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/stylehacks/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/svgo/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/terser-webpack-plugin/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/to-object-path/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/to-regex/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/uglify-js/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/unset-value/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/uri-js/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/util/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/vue-eslint-parser/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/webpack-log/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/worker-farm/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/wrap-ansi/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/write/package.json" />
+    <dismissed value="$PROJECT_DIR$/node_modules/yargs/package.json" />
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="mailer-lite-task_php:latest">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/spatie/enum" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-enum" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1Xwn9QxEpgx61C63bDjVxyOOBbW" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jsx.switch.disabled" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/.bin/eslint" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.eslint.settings.ESLintSettingsPage" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Enums" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/components" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Api" />
+      <recent name="$PROJECT_DIR$/app/Models" />
+      <recent name="$PROJECT_DIR$/docker" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
+    <configuration name="FieldTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\FieldTest" file="$PROJECT_DIR$/tests/Unit/FieldTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SubscriberFieldTest.testIndexOrderLatest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\SubscriberFieldTest" file="$PROJECT_DIR$/tests/Feature/SubscriberFieldTest.php" method="testIndexOrderLatest" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SubscriberTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\SubscriberTest" file="$PROJECT_DIR$/tests/Unit/SubscriberTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bef86329-ece7-492a-9112-c2116658f439" name="Default Changelist" comment="" />
+      <created>1581965872582</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581965872582</updated>
+      <workItem from="1581965873716" duration="3612000" />
+      <workItem from="1581974046986" duration="4572000" />
+      <workItem from="1581981746222" duration="28000" />
+      <workItem from="1581981774905" duration="7000" />
+      <workItem from="1581981802592" duration="4302000" />
+      <workItem from="1581986424976" duration="7200000" />
+      <workItem from="1581996329857" duration="15000" />
+      <workItem from="1582054653737" duration="15094000" />
+      <workItem from="1582082507942" duration="508000" />
+      <workItem from="1582083535289" duration="3138000" />
+      <workItem from="1582086731579" duration="1057000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,62 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    working_dir: /var/www
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PWD-.}:/var/www:cached
+      - ${PWD-.}/docker/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - node
+    networks:
+      main:
+        aliases:
+          - nginx
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    working_dir: /var/www
+    volumes:
+      - ${PWD-.}:/var/www:cached
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mysql
+    networks:
+      main:
+        aliases:
+          - php
+  node:
+    image: node:10-stretch
+    working_dir: /var/www
+    volumes:
+      - ${PWD-.}:/var/www:cached
+      - node:/var/www/node_modules:cached
+    command: bash -lc "curl -o- -L https://yarnpkg.com/install.sh | bash; source ~/.bashrc; yarn install --no-progress; yarn run watch-poll"
+    networks:
+      main:
+        aliases:
+          - node
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mailer-lite
+      - MYSQL_USER=mailer-lite
+      - MYSQL_PASSWORD=mailer-lite-123
+    ports:
+      - "3306:3306"
+    networks:
+      main:
+        aliases:
+          - mysql
+volumes:
+  node:
+
+networks:
+  main:

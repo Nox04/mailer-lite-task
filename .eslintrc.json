@@ -1,0 +1,14 @@
+{
+    "root": true,
+    "env": {
+        "browser": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/vue"
+    ],
+    "plugins": [
+        "prettier"
+    ]
+}
