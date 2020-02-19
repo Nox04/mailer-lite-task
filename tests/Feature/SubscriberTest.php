@@ -12,44 +12,12 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
- * Class SubscriberFieldTest
+ * Class SubscriberTest
  * @package Tests\Feature
  */
-class SubscriberFieldTest extends TestCase
+class SubscriberTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
-
-    /**
-     * @test
-     */
-    public function testIndexOrderLatest()
-    {
-        factory(Subscriber::class, 50)->create();
-
-        $response = $this->get('/api/subscriber/?order=latest');
-
-        $response->assertStatus(200);
-
-        $topId = Arr::get($response->json('data'), '0.id');
-
-        $this->assertEquals(50, $topId);
-    }
-
-    /**
-     * @test
-     */
-    public function testIndexOrderOldest()
-    {
-        factory(Subscriber::class, 50)->create();
-
-        $response = $this->get('/api/subscriber/?order=oldest');
-
-        $response->assertStatus(200);
-
-        $topId = Arr::get($response->json('data'), '0.id');
-
-        $this->assertEquals(1, $topId);
-    }
 
     /**
      * @test

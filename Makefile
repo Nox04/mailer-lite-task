@@ -19,6 +19,7 @@ install-app:
 	docker-compose exec php php artisan migrate:fresh --seed
 	docker-compose exec php php artisan key:generate
 	docker-compose exec php php ./vendor/bin/phpunit
+	docker-compose exec node yarn test
 
 composer-install:
 	docker-compose exec php /bin/bash -lc "/usr/local/bin/composer install -ovn --prefer-source"

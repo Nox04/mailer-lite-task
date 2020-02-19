@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bef86329-ece7-492a-9112-c2116658f439" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/test/__mocks__/FieldMocks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/test/index.spec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/FieldController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/FieldController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/FieldResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/FieldResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SubscriberResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SubscriberResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Field.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Field.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Subscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/EmailDomainValidRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/EmailDomainValidRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/FieldFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/FieldFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/SubscriberFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/SubscriberFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SubscriberFieldTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SubscriberFieldTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SubscriberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SubscriberController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Fields/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Fields/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Subscribers/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Subscribers/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/mixins/crud.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/mixins/crud.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubscriberFieldTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SubscriberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,117 +35,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/compat-data/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/generator/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/helper-compilation-targets/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/helper-create-regexp-features-plugin/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/plugin-transform-runtime/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/@babel/traverse/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/adjust-sourcemap-loader/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/anymatch/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/babel-merge/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/base/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/bonjour/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/cacache/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/caller-callsite/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/caniuse-api/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/cliui/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/color-string/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/compression/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/content-disposition/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/convert-source-map/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/copy-concurrently/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/core-js-compat/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/cosmiconfig/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/create-hash/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/create-hmac/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/css-selector-tokenizer/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/define-property/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/del/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/diffie-hellman/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/dom-serializer/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/espree/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/extglob/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/extract-text-webpack-plugin/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/flat-cache/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/glob-parent/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/global-prefix/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/globby/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/has-values/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/html-loader/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/html-minifier/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/http-errors/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/http-proxy/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/icss-utils/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/imagemin/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/inquirer/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/invariant/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/is-number/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/jest-worker/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/js-yaml/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/make-dir/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/memory-fs/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/micromatch/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/minipass/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/mixin-deep/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/mkdirp/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/move-concurrently/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/nanomatch/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/node-notifier/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/object-copy/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/object.omit/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/path-type/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/pbkdf2/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/portfinder/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-calc/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-colormin/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-merge-rules/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-minify-params/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-extract-imports/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-local-by-default/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-scope/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-modules-values/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-normalize-unicode/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-normalize-url/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-reduce-initial/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/postcss-svgo/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/proxy-addr/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/pumpify/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/readable-stream/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/recast/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/regex-not/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/regexpu-core/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/regjsparser/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/resolve-dir/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/rework/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/send/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/serve-index/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/simple-swizzle/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon-node/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon-util/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/snapdragon/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/sockjs-client/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/sockjs/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/source-map-resolve/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/spdy-transport/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/spdy/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/split-string/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/string-width/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/stylehacks/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/svgo/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/terser-webpack-plugin/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/to-object-path/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/to-regex/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/uglify-js/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/unset-value/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/uri-js/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/util/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/vue-eslint-parser/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/webpack-log/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/worker-farm/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/wrap-ansi/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/write/package.json" />
-    <dismissed value="$PROJECT_DIR$/node_modules/yargs/package.json" />
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="mailer-lite-task_php:latest">
@@ -293,7 +186,7 @@
       <method v="2" />
     </configuration>
     <configuration name="SubscriberFieldTest.testIndexOrderLatest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\SubscriberFieldTest" file="$PROJECT_DIR$/tests/Feature/SubscriberFieldTest.php" method="testIndexOrderLatest" scope="Method" />
+      <TestRunner class="Tests\Feature\SubscriberFieldTest" file="$PROJECT_DIR$/tests/Feature/SubscriberTest.php" method="testIndexOrderLatest" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="SubscriberTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -336,7 +229,7 @@
       <workItem from="1582082507942" duration="508000" />
       <workItem from="1582083535289" duration="3138000" />
       <workItem from="1582086731579" duration="1648000" />
-      <workItem from="1582089136591" duration="893000" />
+      <workItem from="1582089136591" duration="10692000" />
     </task>
     <servers />
   </component>

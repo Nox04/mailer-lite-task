@@ -19,7 +19,6 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
  */
 class SubscriberController extends Controller
 {
-    const PER_PAGE = 10;
 
     /**
      * Display a listing of the resource.
@@ -32,22 +31,13 @@ class SubscriberController extends Controller
         $state = $request->input('state');
         $state = in_array($state, SubscriberState::getNames()) ? $state : null;
 
-        $order = $request->input('order');
-        $order = in_array($order, ['latest', 'oldest']) ? $order : null;
-
         $subscribers = Subscriber::with('fields');
 
         if ($state) {
             $subscribers->where('state', $state);
         }
 
-        if ($order == "oldest") {
-            $subscribers->orderBy('id', 'asc');
-        } else {
-            $subscribers->orderBy('id', 'desc');
-        }
-
-        $subscribers = $subscribers->paginate(self::PER_PAGE);
+        $subscribers = $subscribers->orderBy('id', 'desc')->paginate(10);
 
         return SubscriberResource::collection($subscribers);
     }

@@ -8,6 +8,7 @@
     :server-items-length="totalSubscribers"
     class="elevation-1 dt-min-width"
     :hide-default-footer="true"
+    :disable-sort="true"
     @pagination="onPagination"
   >
     <template v-slot:top>
@@ -70,16 +71,8 @@
 import { apiDomain } from '../../config';
 import Fields from './Fields';
 import rules from '../../helpers/validations';
-import crudMixin from '../../mixins/crud';
+import crudMixin, { validStatus } from '../../mixins/crud';
 
-const validStatus = {
-  idle: 'IDLE',
-  loading: 'LOADING',
-  saving: 'SAVING',
-  deleting: 'DELETING',
-  creating: 'CREATING',
-  editing: 'EDITING'
-};
 export default {
   components: { Fields },
   mixins: [crudMixin],
@@ -93,7 +86,7 @@ export default {
           value: 'name'
         },
         { text: 'Email', value: 'email' },
-        { text: 'State', value: 'state' },
+        { text: 'State', value: 'state', filterable: true },
         ...this.fieldsHeader,
         { text: 'Actions', value: 'action' }
       ];
@@ -102,29 +95,6 @@ export default {
       return this.fields.map((field, index) => {
         return { text: field.title, value: `fields[${index}].value` };
       });
-    },
-    disableButtonsAndFields() {
-      return [validStatus.loading, validStatus.saving].includes(this.status);
-    },
-    loading() {
-      return this.status === validStatus.loading;
-    },
-    formTitle() {
-      return this.status === validStatus.editing
-        ? 'Edit subscriber'
-        : 'New Subscriber';
-    },
-    dialog: {
-      get() {
-        return [
-          validStatus.editing,
-          validStatus.creating,
-          validStatus.saving
-        ].includes(this.status);
-      },
-      set() {
-        this.status = validStatus.idle;
-      }
     }
   },
   data: () => ({
@@ -136,7 +106,8 @@ export default {
     page: 1,
     pageCount: 0,
     perPage: 10,
-    rules
+    rules,
+    crudTitle: 'Subscriber'
   }),
   mounted() {
     this.loadFields();
@@ -172,11 +143,6 @@ export default {
       this.editedItem = { ...item, fields: formattedFields };
       this.status = validStatus.editing;
     },
-    async deleteItem(item) {
-      this.status = validStatus.loading;
-      await axios.delete(`${apiDomain}/subscriber/${item.id}`);
-      await this.requestData();
-    },
     async save() {
       const method = this.status === validStatus.editing ? 'patch' : 'post';
       const url = `${apiDomain}/subscriber/${
@@ -193,9 +159,6 @@ export default {
         await this.requestData();
         this.status = validStatus.idle;
       }
-    },
-    close() {
-      this.status = validStatus.idle;
     },
     create() {
       const formattedFields = {};

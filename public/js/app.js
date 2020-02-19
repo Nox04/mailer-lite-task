@@ -2026,14 +2026,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var validStatus = {
-  idle: 'IDLE',
-  loading: 'LOADING',
-  saving: 'SAVING',
-  deleting: 'DELETING',
-  creating: 'CREATING',
-  editing: 'EDITING'
-};
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_crud__WEBPACK_IMPORTED_MODULE_3__["default"]],
   computed: {
@@ -2052,29 +2044,12 @@ var validStatus = {
         text: 'Actions',
         value: 'action'
       }];
-    },
-    disableButtonsAndFields: function disableButtonsAndFields() {
-      return [validStatus.loading, validStatus.saving].includes(this.status);
-    },
-    loading: function loading() {
-      return this.status === validStatus.loading;
-    },
-    formTitle: function formTitle() {
-      return this.status === validStatus.editing ? 'Edit Field' : 'New Field';
-    },
-    dialog: {
-      get: function get() {
-        return [validStatus.editing, validStatus.creating, validStatus.saving].includes(this.status);
-      },
-      set: function set() {
-        this.status = validStatus.idle;
-      }
     }
   },
   data: function data() {
     return {
       fields: [],
-      status: validStatus.idle,
+      status: _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle,
       editedItem: {},
       types: [{
         text: 'Boolean',
@@ -2089,7 +2064,8 @@ var validStatus = {
         text: 'String',
         value: 'STRING'
       }],
-      rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_2__["default"]
+      rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
+      crudTitle: 'Field'
     };
   },
   mounted: function mounted() {
@@ -2108,7 +2084,7 @@ var validStatus = {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.status = validStatus.loading;
+                _this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].loading;
                 _context.next = 3;
                 return axios.get("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/field"));
 
@@ -2116,7 +2092,7 @@ var validStatus = {
                 _ref = _context.sent;
                 data = _ref.data.data;
                 _this.fields = data;
-                _this.status = validStatus.idle;
+                _this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle;
 
               case 7:
               case "end":
@@ -2128,27 +2104,44 @@ var validStatus = {
     },
     editItem: function editItem(item) {
       this.editedItem = item;
-      this.status = validStatus.editing;
+      this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].editing;
     },
-    deleteItem: function deleteItem(item) {
+    save: function save() {
       var _this2 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var method, url, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.status = validStatus.loading;
-                _context2.next = 3;
-                return axios["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/field/").concat(item.id));
-
-              case 3:
+                method = _this2.status === _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].editing ? 'patch' : 'post';
+                url = "".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/field/").concat(_this2.status === _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].editing ? _this2.editedItem.id : '');
+                _this2.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].saving;
                 _context2.next = 5;
-                return _this2.requestData();
+                return axios({
+                  method: method,
+                  url: url,
+                  data: _this2.editedItem
+                });
 
               case 5:
+                response = _context2.sent;
+
+                if (!response) {
+                  _context2.next = 10;
+                  break;
+                }
+
+                _context2.next = 9;
+                return _this2.requestData();
+
+              case 9:
+                _this2.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle;
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -2156,55 +2149,9 @@ var validStatus = {
         }, _callee2);
       }))();
     },
-    save: function save() {
-      var _this3 = this;
-
-      return _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var method, url, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                method = _this3.status === validStatus.editing ? 'patch' : 'post';
-                url = "".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/field/").concat(_this3.status === validStatus.editing ? _this3.editedItem.id : '');
-                _this3.status = validStatus.saving;
-                _context3.next = 5;
-                return axios({
-                  method: method,
-                  url: url,
-                  data: _this3.editedItem
-                });
-
-              case 5:
-                response = _context3.sent;
-
-                if (!response) {
-                  _context3.next = 10;
-                  break;
-                }
-
-                _context3.next = 9;
-                return _this3.requestData();
-
-              case 9:
-                _this3.status = validStatus.idle;
-
-              case 10:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
-    close: function close() {
-      this.status = validStatus.idle;
-    },
     create: function create() {
       this.editedItem = {};
-      this.status = validStatus.creating;
+      this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].creating;
     }
   }
 });
@@ -2421,18 +2368,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
 
 
 
 
-var validStatus = {
-  idle: 'IDLE',
-  loading: 'LOADING',
-  saving: 'SAVING',
-  deleting: 'DELETING',
-  creating: 'CREATING',
-  editing: 'EDITING'
-};
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Fields: _Fields__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -2452,7 +2392,8 @@ var validStatus = {
         value: 'email'
       }, {
         text: 'State',
-        value: 'state'
+        value: 'state',
+        filterable: true
       }].concat(_toConsumableArray(this.fieldsHeader), [{
         text: 'Actions',
         value: 'action'
@@ -2465,23 +2406,6 @@ var validStatus = {
           value: "fields[".concat(index, "].value")
         };
       });
-    },
-    disableButtonsAndFields: function disableButtonsAndFields() {
-      return [validStatus.loading, validStatus.saving].includes(this.status);
-    },
-    loading: function loading() {
-      return this.status === validStatus.loading;
-    },
-    formTitle: function formTitle() {
-      return this.status === validStatus.editing ? 'Edit subscriber' : 'New Subscriber';
-    },
-    dialog: {
-      get: function get() {
-        return [validStatus.editing, validStatus.creating, validStatus.saving].includes(this.status);
-      },
-      set: function set() {
-        this.status = validStatus.idle;
-      }
     }
   },
   data: function data() {
@@ -2489,12 +2413,13 @@ var validStatus = {
       fields: [],
       totalSubscribers: 0,
       subscribers: [],
-      status: validStatus.idle,
+      status: _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].idle,
       editedItem: {},
       page: 1,
       pageCount: 0,
       perPage: 10,
-      rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_3__["default"]
+      rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_3__["default"],
+      crudTitle: 'Subscriber'
     };
   },
   mounted: function mounted() {
@@ -2517,7 +2442,7 @@ var validStatus = {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.status = validStatus.loading;
+                _this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].loading;
                 _context.next = 3;
                 return axios.get("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/subscriber?page=").concat(_this.page));
 
@@ -2533,7 +2458,7 @@ var validStatus = {
                 _this.totalSubscribers = total;
                 _this.perPage = per_page;
                 _this.pageCount = last_page;
-                _this.status = validStatus.idle;
+                _this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].idle;
 
               case 15:
               case "end":
@@ -2577,79 +2502,50 @@ var validStatus = {
       this.editedItem = _objectSpread({}, item, {
         fields: formattedFields
       });
-      this.status = validStatus.editing;
+      this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].editing;
     },
-    deleteItem: function deleteItem(item) {
+    save: function save() {
       var _this3 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var method, url, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this3.status = validStatus.loading;
-                _context3.next = 3;
-                return axios["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/subscriber/").concat(item.id));
-
-              case 3:
+                method = _this3.status === _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].editing ? 'patch' : 'post';
+                url = "".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/subscriber/").concat(_this3.status === _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].editing ? _this3.editedItem.id : '');
+                _this3.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].saving;
                 _context3.next = 5;
-                return _this3.requestData();
+                return axios({
+                  method: method,
+                  url: url,
+                  data: _this3.editedItem
+                });
 
               case 5:
+                response = _context3.sent;
+
+                if (!response) {
+                  _context3.next = 10;
+                  break;
+                }
+
+                _context3.next = 9;
+                return _this3.requestData();
+
+              case 9:
+                _this3.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].idle;
+
+              case 10:
               case "end":
                 return _context3.stop();
             }
           }
         }, _callee3);
       }))();
-    },
-    save: function save() {
-      var _this4 = this;
-
-      return _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var method, url, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                method = _this4.status === validStatus.editing ? 'patch' : 'post';
-                url = "".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/subscriber/").concat(_this4.status === validStatus.editing ? _this4.editedItem.id : '');
-                _this4.status = validStatus.saving;
-                _context4.next = 5;
-                return axios({
-                  method: method,
-                  url: url,
-                  data: _this4.editedItem
-                });
-
-              case 5:
-                response = _context4.sent;
-
-                if (!response) {
-                  _context4.next = 10;
-                  break;
-                }
-
-                _context4.next = 9;
-                return _this4.requestData();
-
-              case 9:
-                _this4.status = validStatus.idle;
-
-              case 10:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }))();
-    },
-    close: function close() {
-      this.status = validStatus.idle;
     },
     create: function create() {
       var formattedFields = {};
@@ -2659,7 +2555,7 @@ var validStatus = {
       this.editedItem = {
         fields: formattedFields
       };
-      this.status = validStatus.creating;
+      this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_4__["validStatus"].creating;
     }
   },
   watch: {
@@ -4633,7 +4529,7 @@ var render = function() {
       "items-per-page": 100,
       loading: _vm.loading,
       "hide-default-footer": true,
-      fluid: ""
+      "disable-sort": true
     },
     scopedSlots: _vm._u([
       {
@@ -5040,7 +4936,8 @@ var render = function() {
       loading: _vm.loading,
       page: _vm.page,
       "server-items-length": _vm.totalSubscribers,
-      "hide-default-footer": true
+      "hide-default-footer": true,
+      "disable-sort": true
     },
     on: {
       "update:page": function($event) {
@@ -62174,12 +62071,89 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./resources/js/mixins/crud.js ***!
   \*************************************/
-/*! exports provided: default */
+/*! exports provided: validStatus, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validStatus", function() { return validStatus; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./resources/js/config.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var validStatus = {
+  idle: 'IDLE',
+  loading: 'LOADING',
+  saving: 'SAVING',
+  creating: 'CREATING',
+  editing: 'EDITING'
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    disableButtonsAndFields: function disableButtonsAndFields() {
+      return [validStatus.loading, validStatus.saving].includes(this.status);
+    },
+    loading: function loading() {
+      return this.status === validStatus.loading;
+    },
+    formTitle: function formTitle() {
+      return this.status === validStatus.editing ? "Edit ".concat(this.crudTitle) : "New ".concat(this.crudTitle);
+    },
+    endPoint: function endPoint() {
+      return this.crudTitle.toLocaleLowerCase();
+    },
+    dialog: {
+      get: function get() {
+        return [validStatus.editing, validStatus.creating, validStatus.saving].includes(this.status);
+      },
+      set: function set() {
+        this.status = validStatus.idle;
+      }
+    }
+  },
+  data: function data() {
+    return {
+      crudTitle: 'Field'
+    };
+  },
+  methods: {
+    deleteItem: function deleteItem(item) {
+      var _this = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.status = validStatus.loading;
+                _context.next = 3;
+                return axios["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["apiDomain"], "/").concat(_this.endPoint, "/").concat(item.id));
+
+              case 3:
+                _context.next = 5;
+                return _this.requestData();
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    close: function close() {
+      this.status = validStatus.idle;
+    }
+  }
+});
 
 /***/ }),
 

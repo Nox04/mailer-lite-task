@@ -6,7 +6,7 @@
     :loading="loading"
     class="elevation-1 dt-min-width"
     :hide-default-footer="true"
-    fluid
+    :disable-sort="true"
   >
     <template v-slot:top>
       <v-toolbar flat>
@@ -63,16 +63,8 @@
 <script>
   import { apiDomain } from '../../config';
   import rules from '../../helpers/validations';
-  import crudMixin from '../../mixins/crud';
+  import crudMixin, { validStatus } from '../../mixins/crud';
 
-  const validStatus = {
-    idle: 'IDLE',
-    loading: 'LOADING',
-    saving: 'SAVING',
-    deleting: 'DELETING',
-    creating: 'CREATING',
-    editing: 'EDITING'
-  };
   export default {
     mixins: [crudMixin],
     computed: {
@@ -88,29 +80,6 @@
           { text: 'Actions', value: 'action' },
         ];
       },
-      disableButtonsAndFields() {
-        return [validStatus.loading, validStatus.saving].includes(this.status);
-      },
-      loading() {
-        return this.status === validStatus.loading;
-      },
-      formTitle() {
-        return this.status === validStatus.editing
-          ? 'Edit Field'
-          : 'New Field';
-      },
-      dialog: {
-        get() {
-          return [
-            validStatus.editing,
-            validStatus.creating,
-            validStatus.saving
-          ].includes(this.status);
-        },
-        set() {
-          this.status = validStatus.idle;
-        }
-      }
     },
     data: () => ({
       fields: [],
@@ -122,7 +91,8 @@
         { text: 'Number', value: 'NUMBER' },
         { text: 'String', value: 'STRING' },
       ],
-      rules
+      rules,
+      crudTitle: 'Field'
     }),
     mounted() {
       this.requestData();
@@ -142,11 +112,6 @@
         this.editedItem = item;
         this.status = validStatus.editing;
       },
-      async deleteItem(item) {
-        this.status = validStatus.loading;
-        await axios.delete(`${apiDomain}/field/${item.id}`);
-        await this.requestData();
-      },
       async save() {
         const method = this.status === validStatus.editing ? 'patch' : 'post';
         const url = `${apiDomain}/field/${
@@ -163,9 +128,6 @@
           await this.requestData();
           this.status = validStatus.idle;
         }
-      },
-      close() {
-        this.status = validStatus.idle;
       },
       create() {
         this.editedItem = {};
