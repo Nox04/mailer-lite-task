@@ -10,7 +10,7 @@
   >
     <template v-slot:top>
       <v-toolbar flat>
-        <v-toolbar-title>Fields </v-toolbar-title>
+        <v-toolbar-title>Fields</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn color="secondary" class="mb-2" @click="create">New Field</v-btn>
         <v-dialog v-model="dialog" max-width="600px">
@@ -34,10 +34,10 @@
                 <v-row>
                   <v-col cols="12">
                     <v-select
-                    :items="types"
-                    label="Type"
-                    :disabled="disableButtonsAndFields"
-                    v-model="editedItem.type"
+                      :items="types"
+                      label="Type"
+                      :disabled="disableButtonsAndFields"
+                      v-model="editedItem.type"
                     ></v-select>
                   </v-col>
                 </v-row>
@@ -61,78 +61,78 @@
 </template>
 
 <script>
-  import { apiDomain } from '../../config';
-  import rules from '../../helpers/validations';
-  import crudMixin, { validStatus } from '../../mixins/crud';
+import { apiDomain } from '../../config';
+import rules from '../../helpers/validations';
+import crudMixin, { validStatus } from '../../mixins/crud';
 
-  export default {
-    mixins: [crudMixin],
-    computed: {
-      headers() {
-        return [
-          { text: 'Id', value: 'id' },
-          {
-            text: 'Title',
-            align: 'left',
-            value: 'title'
-          },
-          { text: 'Type', value: 'type' },
-          { text: 'Actions', value: 'action' },
-        ];
-      },
-    },
-    data: () => ({
-      fields: [],
-      status: validStatus.idle,
-      editedItem: {},
-      types: [
-        { text: 'Boolean', value: 'BOOLEAN' },
-        { text: 'Date', value: 'DATE' },
-        { text: 'Number', value: 'NUMBER' },
-        { text: 'String', value: 'STRING' },
-      ],
-      rules,
-      crudTitle: 'Field'
-    }),
-    mounted() {
-      this.requestData();
-    },
-    methods: {
-      async requestData() {
-        this.status = validStatus.loading;
-        const {
-          data: {
-            data
-          }
-        } = await axios.get(`${apiDomain}/field`);
-        this.fields = data;
-        this.status = validStatus.idle;
-      },
-      editItem(item) {
-        this.editedItem = item;
-        this.status = validStatus.editing;
-      },
-      async save() {
-        const method = this.status === validStatus.editing ? 'patch' : 'post';
-        const url = `${apiDomain}/field/${
-          this.status === validStatus.editing ? this.editedItem.id : ''
-        }`;
-        this.status = validStatus.saving;
-
-        const response = await axios({
-          method,
-          url,
-          data: this.editedItem
-        });
-        if (response) {
-          await this.requestData();
-          this.showMessage('Subscriber saved successfully', true);
-        }
-      },
-      create() {
-        this.editedItem = {};
-        this.status = validStatus.creating;
-      }
+export default {
+  mixins: [crudMixin],
+  computed: {
+    headers() {
+      return [
+        { text: 'Id', value: 'id' },
+        {
+          text: 'Title',
+          align: 'left',
+          value: 'title'
+        },
+        { text: 'Type', value: 'type' },
+        { text: 'Actions', value: 'action' }
+      ];
     }
-  };
+  },
+  data: () => ({
+    fields: [],
+    status: validStatus.idle,
+    editedItem: {},
+    types: [
+      { text: 'Boolean', value: 'BOOLEAN' },
+      { text: 'Date', value: 'DATE' },
+      { text: 'Number', value: 'NUMBER' },
+      { text: 'String', value: 'STRING' }
+    ],
+    rules,
+    crudTitle: 'Field'
+  }),
+  mounted() {
+    this.requestData();
+  },
+  methods: {
+    async requestData() {
+      this.status = validStatus.loading;
+      const {
+        data: { data }
+      } = await axios
+        .get(`${apiDomain}/field`)
+        .catch(e => this.showMessage(e, false));
+      this.fields = data;
+      this.status = validStatus.idle;
+    },
+    editItem(item) {
+      this.editedItem = item;
+      this.status = validStatus.editing;
+    },
+    async save() {
+      const method = this.status === validStatus.editing ? 'patch' : 'post';
+      const url = `${apiDomain}/field/${
+        this.status === validStatus.editing ? this.editedItem.id : ''
+      }`;
+      this.status = validStatus.saving;
+
+      const response = await axios({
+        method,
+        url,
+        data: this.editedItem
+      }).catch(e => this.showMessage(e, false));
+      if (response) {
+        await this.requestData();
+        this.showMessage('Subscriber saved successfully', true);
+      }
+    },
+    create() {
+      this.editedItem = {};
+      this.status = validStatus.creating;
+    }
+  }
+};
 </script>

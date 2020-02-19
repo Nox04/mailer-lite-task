@@ -43,7 +43,9 @@ export default {
   methods: {
     async deleteItem(item) {
       this.status = validStatus.loading;
-      await axios.delete(`${apiDomain}/${this.endPoint}/${item.id}`);
+      await axios
+        .delete(`${apiDomain}/${this.endPoint}/${item.id}`)
+        .catch(e => this.showMessage(e, false));
       await this.requestData();
       this.showMessage('Subscriber deleted successfully', true);
     },

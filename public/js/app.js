@@ -2059,7 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
         data: {
           data
         }
-      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/field`);
+      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/field`).catch(e => this.showMessage(e, false));
       this.fields = data;
       this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_2__["validStatus"].idle;
     },
@@ -2077,7 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
         method,
         url,
         data: this.editedItem
-      });
+      }).catch(e => this.showMessage(e, false));
 
       if (response) {
         await this.requestData();
@@ -2361,7 +2361,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             last_page
           }
         }
-      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/subscriber?page=${this.page}`);
+      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/subscriber?page=${this.page}`).catch(e => this.showMessage(e, false));
       this.subscribers = data;
       this.totalSubscribers = total;
       this.perPage = per_page;
@@ -2370,7 +2370,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
 
     async loadFields() {
-      const fields = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/field`);
+      const fields = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/field`).catch(e => this.showMessage(e, false));
       this.fields = fields.data.data;
     },
 
@@ -3659,7 +3659,7 @@ var render = function() {
               "v-toolbar",
               { attrs: { flat: "" } },
               [
-                _c("v-toolbar-title", [_vm._v("Fields ")]),
+                _c("v-toolbar-title", [_vm._v("Fields")]),
                 _vm._v(" "),
                 _c("v-spacer"),
                 _vm._v(" "),
@@ -60812,6 +60812,16 @@ __webpack_require__.r(__webpack_exports__);
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = _config__WEBPACK_IMPORTED_MODULE_0__["csrfToken"];
+window.axios.interceptors.response.use(response => {
+  return response;
+}, function (error) {
+  if (error.response.status === 422) {
+    const key = Object.keys(error.response.data.errors)[0];
+    return Promise.reject(error.response.data.errors[key][0]);
+  }
+
+  return Promise.reject('Could not connect to the server.');
+});
 
 /***/ }),
 
@@ -61250,7 +61260,7 @@ const validStatus = {
   methods: {
     async deleteItem(item) {
       this.status = validStatus.loading;
-      await axios.delete(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/${this.endPoint}/${item.id}`);
+      await axios.delete(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/${this.endPoint}/${item.id}`).catch(e => this.showMessage(e, false));
       await this.requestData();
       this.showMessage('Subscriber deleted successfully', true);
     },

@@ -124,7 +124,9 @@ export default {
           data,
           meta: { total, per_page, last_page }
         }
-      } = await axios.get(`${apiDomain}/subscriber?page=${this.page}`);
+      } = await axios
+        .get(`${apiDomain}/subscriber?page=${this.page}`)
+        .catch(e => this.showMessage(e, false));
       this.subscribers = data;
       this.totalSubscribers = total;
       this.perPage = per_page;
@@ -132,7 +134,9 @@ export default {
       this.status = validStatus.idle;
     },
     async loadFields() {
-      const fields = await axios.get(`${apiDomain}/field`);
+      const fields = await axios
+        .get(`${apiDomain}/field`)
+        .catch(e => this.showMessage(e, false));
       this.fields = fields.data.data;
     },
     editItem(item) {
@@ -154,7 +158,7 @@ export default {
         method,
         url,
         data: this.editedItem
-      }).catch((e) => this.showMessage(e, false));
+      }).catch(e => this.showMessage(e, false));
       if (response) {
         await this.requestData();
         this.showMessage('Subscriber saved successfully', true);
