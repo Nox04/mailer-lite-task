@@ -5,7 +5,6 @@ WORKDIR /var/www
 RUN apt-get update && docker-php-ext-install pdo_mysql && apt-get install -y --no-install-recommends git zip unzip
 RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
-RUN echo 'zend_extension="/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so"' >> /usr/local/etc/php/php.ini
 RUN echo 'xdebug.remote_port=9001' >> /usr/local/etc/php/php.ini
 RUN echo 'xdebug.remote_enable=1' >> /usr/local/etc/php/php.ini
 RUN echo 'xdebug.remote_connect_back=1' >> /usr/local/etc/php/php.ini
