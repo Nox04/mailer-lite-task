@@ -15,9 +15,17 @@
       <v-toolbar flat>
         <v-toolbar-title>Subscribers</v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-autocomplete
+          v-model="selectedState"
+          :items="subscriberStates"
+          class="mt-6"
+          label="State"
+          color="secondary"
+          multiple
+        ></v-autocomplete>
         <v-btn
           color="secondary"
-          class="mb-2"
+          class="ma-2"
           @click="create"
           :disabled="disableButtonsAndFields"
         >New Subscriber</v-btn>
@@ -79,7 +87,7 @@
 </template>
 
 <script>
-import { apiDomain } from '../../config';
+import { apiDomain, subscriberStates } from '../../config';
 import Fields from './Fields';
 import rules from '../../helpers/validations';
 import crudMixin, { validStatus } from '../../mixins/crud';
@@ -108,24 +116,28 @@ export default {
       });
     },
     formattedSubscribers() {
-      return this.subscribers.map((subscriber) => {
+      return this.subscribers.map(subscriber => {
         const fieldValues = {};
-        subscriber.fields.forEach((field) => fieldValues[field.id] = field.value);
+        subscriber.fields.forEach(
+          field => (fieldValues[field.id] = field.value)
+        );
         return { ...subscriber, fieldValues };
       });
-    },
+    }
   },
   data: () => ({
     fields: [],
-    totalSubscribers: 0,
     subscribers: [],
-    status: validStatus.idle,
     editedItem: {},
+    totalSubscribers: 0,
+    status: validStatus.idle,
     page: 1,
     pageCount: 0,
     perPage: 10,
+    crudTitle: 'Subscriber',
     rules,
-    crudTitle: 'Subscriber'
+    subscriberStates,
+    selectedState: undefined
   }),
   mounted() {
     this.loadFields();
@@ -143,12 +155,20 @@ export default {
           meta: { total, per_page, last_page }
         }
       } = await axios
-        .get(`${apiDomain}/subscriber?page=${this.page}`)
+        .get(`${apiDomain}/subscriber`, {
+          params: {
+            page: this.page,
+            state: this.selectedState
+          }
+        })
         .catch(e => this.showMessage(e, false));
       this.subscribers = data;
       this.totalSubscribers = total;
       this.perPage = per_page;
       this.pageCount = last_page;
+      if (this.page > last_page) {
+          this.page = last_page;
+      }
       this.status = validStatus.idle;
     },
     async loadFields() {
@@ -193,6 +213,9 @@ export default {
   },
   watch: {
     page() {
+      this.requestData();
+    },
+    selectedState() {
       this.requestData();
     }
   }

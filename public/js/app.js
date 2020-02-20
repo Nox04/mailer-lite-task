@@ -2302,6 +2302,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2354,15 +2362,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: () => ({
     fields: [],
-    totalSubscribers: 0,
     subscribers: [],
-    status: _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle,
     editedItem: {},
+    totalSubscribers: 0,
+    status: _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle,
     page: 1,
     pageCount: 0,
     perPage: 10,
+    crudTitle: 'Subscriber',
     rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
-    crudTitle: 'Subscriber'
+    subscriberStates: _config__WEBPACK_IMPORTED_MODULE_0__["subscriberStates"],
+    selectedState: undefined
   }),
 
   mounted() {
@@ -2386,11 +2396,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             last_page
           }
         }
-      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/subscriber?page=${this.page}`).catch(e => this.showMessage(e, false));
+      } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/subscriber`, {
+        params: {
+          page: this.page,
+          state: this.selectedState
+        }
+      }).catch(e => this.showMessage(e, false));
       this.subscribers = data;
       this.totalSubscribers = total;
       this.perPage = per_page;
       this.pageCount = last_page;
+
+      if (this.page > last_page) {
+        this.page = last_page;
+      }
+
       this.status = _mixins_crud__WEBPACK_IMPORTED_MODULE_3__["validStatus"].idle;
     },
 
@@ -2440,6 +2460,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   watch: {
     page() {
+      this.requestData();
+    },
+
+    selectedState() {
       this.requestData();
     }
 
@@ -4105,10 +4129,27 @@ var render = function() {
                 _vm._v(" "),
                 _c("v-spacer"),
                 _vm._v(" "),
+                _c("v-autocomplete", {
+                  staticClass: "mt-6",
+                  attrs: {
+                    items: _vm.subscriberStates,
+                    label: "State",
+                    color: "secondary",
+                    multiple: ""
+                  },
+                  model: {
+                    value: _vm.selectedState,
+                    callback: function($$v) {
+                      _vm.selectedState = $$v
+                    },
+                    expression: "selectedState"
+                  }
+                }),
+                _vm._v(" "),
                 _c(
                   "v-btn",
                   {
-                    staticClass: "mb-2",
+                    staticClass: "ma-2",
                     attrs: {
                       color: "secondary",
                       disabled: _vm.disableButtonsAndFields
@@ -61137,15 +61178,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************!*\
   !*** ./resources/js/config.js ***!
   \********************************/
-/*! exports provided: apiDomain, csrfToken */
+/*! exports provided: apiDomain, csrfToken, subscriberStates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiDomain", function() { return apiDomain; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "csrfToken", function() { return csrfToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subscriberStates", function() { return subscriberStates; });
 const apiDomain = document.head.querySelector('meta[name="api-domain"]').content;
 const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+const subscriberStates = ['ACTIVE', 'BOUNCED', 'JUNK', 'UNCONFIRMED', 'UNSUBSCRIBED'];
 
 /***/ }),
 

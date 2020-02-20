@@ -29,12 +29,11 @@ class SubscriberController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $state = $request->input('state');
-        $state = in_array($state, SubscriberState::getNames()) ? $state : null;
 
         $subscribers = Subscriber::with('fields');
 
         if ($state) {
-            $subscribers->where('state', $state);
+            $subscribers->state($state);
         }
 
         $subscribers = $subscribers->orderBy('id', 'desc')->paginate(10);
