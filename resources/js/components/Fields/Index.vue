@@ -6,7 +6,6 @@
     :loading="loading"
     class="elevation-1 dt-min-width"
     :hide-default-footer="true"
-    :disable-sort="true"
   >
     <template v-slot:top>
       <v-toolbar flat>
@@ -82,7 +81,7 @@ export default {
           value: 'title'
         },
         { text: 'Type', value: 'type' },
-        { text: 'Actions', value: 'action' }
+        { text: 'Actions', value: 'action', sortable: false }
       ];
     }
   },

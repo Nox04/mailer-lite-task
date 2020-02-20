@@ -29,6 +29,7 @@ class SubscriberController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $state = $request->input('state');
+        $sorting = json_decode($request->input('sorting'));
 
         $subscribers = Subscriber::with('fields');
 
@@ -36,9 +37,9 @@ class SubscriberController extends Controller
             $subscribers->state($state);
         }
 
-        $subscribers = $subscribers->orderBy('id', 'desc')->paginate(10);
+        $subscribers->sortResponse($sorting);
 
-        return SubscriberResource::collection($subscribers);
+        return SubscriberResource::collection($subscribers->paginate(10));
     }
 
     /**

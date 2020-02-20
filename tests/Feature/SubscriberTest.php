@@ -38,6 +38,38 @@ class SubscriberTest extends TestCase
     /**
      * @test
      */
+    public function testIndexSorted()
+    {
+        factory(Subscriber::class, 50)->create();
+
+        $response = $this->get('/api/subscriber?sorting={"by":"id","desc":false}');
+
+        $response->assertStatus(200)->assertJsonCount(10, 'data');
+
+        $this->assertEquals(1, Arr::get($response->json('data'), '0.id'));
+
+    }
+
+    /**
+     * @test
+     */
+    public function testIndexFiltered()
+    {
+        factory(Subscriber::class, 50)->create();
+
+        $response = $this->get('/api/subscriber?state[]=ACTIVE');
+
+        $response->assertStatus(200);
+
+        foreach ($response->json('data') as $subscriber) {
+            $this->assertEquals(SubscriberState::ACTIVE(), $subscriber['state']);
+        }
+
+    }
+
+    /**
+     * @test
+     */
     public function testPostSubscriber()
     {
         $response = $this->post('/api/subscriber', [

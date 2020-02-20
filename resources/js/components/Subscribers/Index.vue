@@ -8,8 +8,8 @@
     :server-items-length="totalSubscribers"
     class="elevation-1 dt-min-width"
     :hide-default-footer="true"
-    :disable-sort="true"
     @pagination="onPagination"
+    @update:options="opnUpdatedOptions"
   >
     <template v-slot:top>
       <v-toolbar flat>
@@ -107,12 +107,16 @@ export default {
         { text: 'Email', value: 'email' },
         { text: 'State', value: 'state' },
         ...this.fieldsHeader,
-        { text: 'Actions', value: 'action' }
+        { text: 'Actions', value: 'action', sortable: false }
       ];
     },
     fieldsHeader() {
       return this.fields.map((field, index) => {
-        return { text: field.title, value: `fieldValues[${field.id}]` };
+        return {
+          text: field.title,
+          value: `fieldValues[${field.id}]`,
+          sortable: false
+        };
       });
     },
     formattedSubscribers() {
@@ -137,7 +141,8 @@ export default {
     crudTitle: 'Subscriber',
     rules,
     subscriberStates,
-    selectedState: undefined
+    selectedState: undefined,
+    sortingCriteria: {}
   }),
   mounted() {
     this.loadFields();
@@ -146,6 +151,16 @@ export default {
   methods: {
     onPagination(paginationInfo) {
       this.page = paginationInfo.page;
+    },
+    opnUpdatedOptions(optionsInfo) {
+      if (optionsInfo.sortBy.length > 0) {
+        this.sortingCriteria = {
+          by: optionsInfo.sortBy[0],
+          desc: optionsInfo.sortDesc[0]
+        };
+      } else {
+        this.sortingCriteria = {};
+      }
     },
     async requestData() {
       this.status = validStatus.loading;
@@ -158,7 +173,8 @@ export default {
         .get(`${apiDomain}/subscriber`, {
           params: {
             page: this.page,
-            state: this.selectedState
+            state: this.selectedState,
+            sorting: JSON.stringify(this.sortingCriteria),
           }
         })
         .catch(e => this.showMessage(e, false));
@@ -167,7 +183,7 @@ export default {
       this.perPage = per_page;
       this.pageCount = last_page;
       if (this.page > last_page) {
-          this.page = last_page;
+        this.page = last_page;
       }
       this.status = validStatus.idle;
     },
@@ -217,6 +233,12 @@ export default {
     },
     selectedState() {
       this.requestData();
+    },
+    sortingCriteria: {
+      handler: function(value) {
+          this.requestData();
+      },
+      deep: true
     }
   }
 };

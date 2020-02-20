@@ -2007,7 +2007,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2027,7 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
         value: 'type'
       }, {
         text: 'Actions',
-        value: 'action'
+        value: 'action',
+        sortable: false
       }];
     }
 
@@ -2336,7 +2336,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: 'state'
       }, ...this.fieldsHeader, {
         text: 'Actions',
-        value: 'action'
+        value: 'action',
+        sortable: false
       }];
     },
 
@@ -2344,7 +2345,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.fields.map((field, index) => {
         return {
           text: field.title,
-          value: `fieldValues[${field.id}]`
+          value: `fieldValues[${field.id}]`,
+          sortable: false
         };
       });
     },
@@ -2372,7 +2374,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     crudTitle: 'Subscriber',
     rules: _helpers_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
     subscriberStates: _config__WEBPACK_IMPORTED_MODULE_0__["subscriberStates"],
-    selectedState: undefined
+    selectedState: undefined,
+    sortingCriteria: {}
   }),
 
   mounted() {
@@ -2383,6 +2386,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     onPagination(paginationInfo) {
       this.page = paginationInfo.page;
+    },
+
+    opnUpdatedOptions(optionsInfo) {
+      if (optionsInfo.sortBy.length > 0) {
+        this.sortingCriteria = {
+          by: optionsInfo.sortBy[0],
+          desc: optionsInfo.sortDesc[0]
+        };
+      } else {
+        this.sortingCriteria = {};
+      }
     },
 
     async requestData() {
@@ -2399,7 +2413,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } = await axios.get(`${_config__WEBPACK_IMPORTED_MODULE_0__["apiDomain"]}/subscriber`, {
         params: {
           page: this.page,
-          state: this.selectedState
+          state: this.selectedState,
+          sorting: JSON.stringify(this.sortingCriteria)
         }
       }).catch(e => this.showMessage(e, false));
       this.subscribers = data;
@@ -2465,8 +2480,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     selectedState() {
       this.requestData();
-    }
+    },
 
+    sortingCriteria: {
+      handler: function (value) {
+        this.requestData();
+      },
+      deep: true
+    }
   }
 });
 
@@ -3696,8 +3717,7 @@ var render = function() {
       items: _vm.fields,
       "items-per-page": 100,
       loading: _vm.loading,
-      "hide-default-footer": true,
-      "disable-sort": true
+      "hide-default-footer": true
     },
     scopedSlots: _vm._u([
       {
@@ -4107,14 +4127,14 @@ var render = function() {
       loading: _vm.loading,
       page: _vm.page,
       "server-items-length": _vm.totalSubscribers,
-      "hide-default-footer": true,
-      "disable-sort": true
+      "hide-default-footer": true
     },
     on: {
       "update:page": function($event) {
         _vm.page = $event
       },
-      pagination: _vm.onPagination
+      pagination: _vm.onPagination,
+      "update:options": _vm.opnUpdatedOptions
     },
     scopedSlots: _vm._u([
       {

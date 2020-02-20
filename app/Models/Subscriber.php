@@ -54,4 +54,22 @@ class Subscriber extends Model
         }
         return $query;
     }
+
+    /**
+     * Scope a query to only include users of a given state or states.
+     *
+     * @param  Builder  $query
+     * @param  array  $sortingCriteria
+     * @return Builder
+     */
+    public function scopeSortResponse($query, $sortingCriteria): Builder
+    {
+        if(isset($sortingCriteria) && array_key_exists('by', $sortingCriteria)) {
+            $direction = $sortingCriteria->desc ? 'desc' : 'asc';
+            return $query->orderBy($sortingCriteria->by, $direction);
+        } else {
+            return $query->orderBy('id', 'desc');
+        }
+
+    }
 }
