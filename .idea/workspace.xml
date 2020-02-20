@@ -5,12 +5,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Enums/FieldType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Enums/FieldType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Enums/SubscriberState.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Enums/SubscriberState.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/FieldController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/FieldController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SubscriberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SubscriberController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/FieldResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/FieldResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SubscriberResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SubscriberResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Field.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Field.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Subscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Fields/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Fields/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Subscribers/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Subscribers/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SubscriberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SubscriberTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -236,7 +238,7 @@
       <workItem from="1582086731579" duration="1648000" />
       <workItem from="1582089136591" duration="18340000" />
       <workItem from="1582166373645" duration="397000" />
-      <workItem from="1582170507258" duration="2718000" />
+      <workItem from="1582170507258" duration="4278000" />
     </task>
     <servers />
   </component>

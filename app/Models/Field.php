@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Enum\Laravel\HasEnums;
 
 /**
+ * Class Field
  * @property int id
  * @property FieldType type
  */

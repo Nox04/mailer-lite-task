@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Enum\Laravel\HasEnums;
 
 /**
+ * Class Subscriber
  * @property int id
  * @property SubscriberState state
  */
@@ -22,6 +23,7 @@ class Subscriber extends Model
     protected $enums = [
         'state' => SubscriberState::class,
     ];
+
     /**
      * @var array
      */
@@ -35,6 +37,9 @@ class Subscriber extends Model
         return $this->belongsToMany(Field::class)->withPivot('value');
     }
 
+    /**
+     * Set the subscriber's state to default state.
+     */
     public function setDefaultState(): void
     {
         $this->state = SubscriberState::UNCONFIRMED();
@@ -56,7 +61,7 @@ class Subscriber extends Model
     }
 
     /**
-     * Scope a query to only include users of a given state or states.
+     * Scope a query to sort the results using given criteria.
      *
      * @param  Builder  $query
      * @param  array  $sortingCriteria

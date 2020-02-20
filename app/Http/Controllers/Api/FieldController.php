@@ -11,6 +11,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
+/**
+ * Class FieldController
+ * @package App\Http\Controllers
+ */
 class FieldController extends Controller
 {
 

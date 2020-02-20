@@ -2,16 +2,17 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\SubscriberState;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
+ * Class SubscriberResource
  * @property mixed updated_at
  * @property mixed created_at
- * @property mixed state_named
- * @property mixed state
- * @property mixed name
- * @property mixed email
+ * @property SubscriberState state
+ * @property string name
+ * @property string email
  * @property mixed id
  */
 class SubscriberResource extends JsonResource

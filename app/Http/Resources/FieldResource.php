@@ -6,16 +6,32 @@ use App\Enums\FieldType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class FieldResource
+ * @property mixed updated_at
+ * @property mixed created_at
+ * @property string title
+ * @property FieldType type
+ * @property mixed id
+ */
 class FieldResource extends JsonResource
 {
 
+    /**
+     * Cast the field value to the respective type.
+     * @param $value
+     * @param FieldType $fieldType
+     * @return bool|int
+     */
     private function castPivotValue($value, FieldType $fieldType) {
         switch ($fieldType) {
             case FieldType::BOOLEAN():
                 $value = boolval($value);
                 break;
-            case  FieldType::NUMBER():
+            case FieldType::NUMBER():
                 $value = (int) $value;
+                break;
+            default:
                 break;
         }
         return $value;

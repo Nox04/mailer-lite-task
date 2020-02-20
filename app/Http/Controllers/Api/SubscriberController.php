@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\SubscriberState;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubscriberRequest;
 use App\Http\Resources\SubscriberResource;
