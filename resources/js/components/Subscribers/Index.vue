@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="subscribers"
+    :items="formattedSubscribers"
     :items-per-page="perPage"
     :loading="loading"
     :page.sync="page"
@@ -15,7 +15,12 @@
       <v-toolbar flat>
         <v-toolbar-title>Subscribers</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn color="secondary" class="mb-2" @click="create">New Subscriber</v-btn>
+        <v-btn
+          color="secondary"
+          class="mb-2"
+          @click="create"
+          :disabled="disableButtonsAndFields"
+        >New Subscriber</v-btn>
         <v-dialog v-model="dialog" max-width="600px">
           <v-card>
             <v-card-title>
@@ -51,7 +56,13 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="error" text @click="close" :disabled="disableButtonsAndFields">Cancel</v-btn>
-              <v-btn color="primary" text @click="save" :disabled="disableButtonsAndFields">Save</v-btn>
+              <v-btn
+                color="primary"
+                text
+                @click="save"
+                :disabled="disableButtonsAndFields"
+                :loading="disableButtonsAndFields"
+              >Save</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -86,16 +97,23 @@ export default {
           value: 'name'
         },
         { text: 'Email', value: 'email' },
-        { text: 'State', value: 'state', filterable: true },
+        { text: 'State', value: 'state' },
         ...this.fieldsHeader,
         { text: 'Actions', value: 'action' }
       ];
     },
     fieldsHeader() {
       return this.fields.map((field, index) => {
-        return { text: field.title, value: `fields[${index}].value` };
+        return { text: field.title, value: `fieldValues[${field.id}]` };
       });
-    }
+    },
+    formattedSubscribers() {
+      return this.subscribers.map((subscriber) => {
+        const fieldValues = {};
+        subscriber.fields.forEach((field) => fieldValues[field.id] = field.value);
+        return { ...subscriber, fieldValues };
+      });
+    },
   },
   data: () => ({
     fields: [],

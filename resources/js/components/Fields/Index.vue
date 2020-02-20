@@ -12,7 +12,12 @@
       <v-toolbar flat>
         <v-toolbar-title>Fields</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn color="secondary" class="mb-2" @click="create">New Field</v-btn>
+        <v-btn
+          color="secondary"
+          class="mb-2"
+          @click="create"
+          :disabled="disableButtonsAndFields"
+        >New Field</v-btn>
         <v-dialog v-model="dialog" max-width="600px">
           <v-card>
             <v-card-title>

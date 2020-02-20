@@ -2003,6 +2003,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2286,6 +2291,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2309,8 +2325,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: 'email'
       }, {
         text: 'State',
-        value: 'state',
-        filterable: true
+        value: 'state'
       }, ...this.fieldsHeader, {
         text: 'Actions',
         value: 'action'
@@ -2321,8 +2336,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.fields.map((field, index) => {
         return {
           text: field.title,
-          value: `fields[${index}].value`
+          value: `fieldValues[${field.id}]`
         };
+      });
+    },
+
+    formattedSubscribers() {
+      return this.subscribers.map(subscriber => {
+        const fieldValues = {};
+        subscriber.fields.forEach(field => fieldValues[field.id] = field.value);
+        return _objectSpread({}, subscriber, {
+          fieldValues
+        });
       });
     }
 
@@ -3667,7 +3692,10 @@ var render = function() {
                   "v-btn",
                   {
                     staticClass: "mb-2",
-                    attrs: { color: "secondary" },
+                    attrs: {
+                      color: "secondary",
+                      disabled: _vm.disableButtonsAndFields
+                    },
                     on: { click: _vm.create }
                   },
                   [_vm._v("New Field")]
@@ -4050,7 +4078,7 @@ var render = function() {
     staticClass: "elevation-1 dt-min-width",
     attrs: {
       headers: _vm.headers,
-      items: _vm.subscribers,
+      items: _vm.formattedSubscribers,
       "items-per-page": _vm.perPage,
       loading: _vm.loading,
       page: _vm.page,
@@ -4081,7 +4109,10 @@ var render = function() {
                   "v-btn",
                   {
                     staticClass: "mb-2",
-                    attrs: { color: "secondary" },
+                    attrs: {
+                      color: "secondary",
+                      disabled: _vm.disableButtonsAndFields
+                    },
                     on: { click: _vm.create }
                   },
                   [_vm._v("New Subscriber")]
@@ -4222,7 +4253,8 @@ var render = function() {
                                 attrs: {
                                   color: "primary",
                                   text: "",
-                                  disabled: _vm.disableButtonsAndFields
+                                  disabled: _vm.disableButtonsAndFields,
+                                  loading: _vm.disableButtonsAndFields
                                 },
                                 on: { click: _vm.save }
                               },
