@@ -6,6 +6,7 @@ use App\Enums\SubscriberState;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Traits\SearchableTrait;
 use Spatie\Enum\Laravel\HasEnums;
 
 /**
@@ -16,6 +17,7 @@ use Spatie\Enum\Laravel\HasEnums;
 class Subscriber extends Model
 {
     use HasEnums;
+    use SearchableTrait;
 
     /**
      * Defining account states
@@ -69,12 +71,35 @@ class Subscriber extends Model
      */
     public function scopeSortResponse($query, $sortingCriteria): Builder
     {
-        if(isset($sortingCriteria) && array_key_exists('by', $sortingCriteria)) {
+        if (isset($sortingCriteria) && array_key_exists('by', $sortingCriteria)) {
             $direction = $sortingCriteria->desc ? 'desc' : 'asc';
             return $query->orderBy($sortingCriteria->by, $direction);
         } else {
             return $query->orderBy('id', 'desc');
         }
-
     }
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'subscribers.name' => 10,
+            'subscribers.email' => 7,
+            'fields.value' => 3,
+        ],
+        'joins' => [
+            'field_subscriber' => ['subscribers.id', 'field_subscriber.subscriber_id'],
+            'fields' => ['field_subscriber.field_id', 'fields.id'],
+        ],
+    ];
 }

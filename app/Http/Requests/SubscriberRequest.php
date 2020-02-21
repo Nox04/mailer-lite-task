@@ -29,7 +29,7 @@ class SubscriberRequest extends FormRequest
      */
     public function rules(): array
     {
-        if ($this->method() == 'PATCH') {
+        if ($this->method() === 'PATCH') {
             $unique = Rule::unique('subscribers', 'email')->ignore($this->input('id'));
         } else {
             $unique = Rule::unique('subscribers', 'email');

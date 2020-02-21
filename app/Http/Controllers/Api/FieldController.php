@@ -17,7 +17,6 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
  */
 class FieldController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *

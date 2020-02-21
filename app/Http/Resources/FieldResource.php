@@ -16,14 +16,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class FieldResource extends JsonResource
 {
-
     /**
      * Cast the field value to the respective type.
      * @param $value
      * @param FieldType $fieldType
      * @return bool|int
      */
-    private function castPivotValue($value, FieldType $fieldType) {
+    private function castPivotValue($value, FieldType $fieldType)
+    {
         switch ($fieldType) {
             case FieldType::BOOLEAN():
                 $value = boolval($value);

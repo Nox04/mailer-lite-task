@@ -15,9 +15,9 @@ class EmailDomainValidRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        [, $domain] = explode("@", $value);
+        [, $domain] = explode('@', $value);
 
-        return checkdnsrr($domain, "MX");
+        return checkdnsrr($domain, 'MX');
     }
 
     /**
