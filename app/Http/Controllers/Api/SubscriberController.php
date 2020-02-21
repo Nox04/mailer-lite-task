@@ -18,6 +18,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
  */
 class SubscriberController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +29,6 @@ class SubscriberController extends Controller
     {
         $state = $request->input('state');
         $sorting = json_decode($request->input('sorting'));
-        $search = json_decode($request->input('search'));
 
         $subscribers = Subscriber::with('fields');
 
@@ -36,11 +36,7 @@ class SubscriberController extends Controller
             $subscribers->state($state);
         }
 
-        if ($search) {
-            $subscribers = $subscribers->search($search);
-        }
-
-        //$subscribers->sortResponse($sorting);
+        $subscribers->sortResponse($sorting);
 
         return SubscriberResource::collection($subscribers->paginate(10));
     }
@@ -69,7 +65,7 @@ class SubscriberController extends Controller
             if ($value) {
                 $subscriber->fields()->attach($key, ['value' => $value]);
             }
-        }
+        };
 
         $subscriber->load('fields');
 
@@ -108,7 +104,7 @@ class SubscriberController extends Controller
             throw new Exception('Could not update the subscriber.');
         }
         $fields = [];
-        foreach ($data['fields'] as $key => $value) {
+        foreach($data['fields'] as $key => $value) {
             $fields[$key] = ['value' => $value];
         }
 
