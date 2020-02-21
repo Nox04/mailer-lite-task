@@ -95,11 +95,10 @@ class Subscriber extends Model
         'columns' => [
             'subscribers.name' => 10,
             'subscribers.email' => 7,
-            'fields.value' => 3,
+            'field_subscriber.value' => 3,
         ],
         'joins' => [
-            'field_subscriber' => ['subscribers.id', 'field_subscriber.subscriber_id'],
-            'fields' => ['field_subscriber.field_id', 'fields.id'],
+            'field_subscriber' => ['subscribers.id', 'field_subscriber.subscriber_id']
         ],
     ];
 }
