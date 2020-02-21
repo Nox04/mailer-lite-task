@@ -41,16 +41,13 @@ class AppSeeder extends Seeder
     public function run()
     {
         $fields = factory(Field::class, 5)->create();
-        $counter = 0;
-        for ($i=0; $i < 10000; $i++) {
+        for ($i=0; $i < 5000; $i++) {
             $subscribers = factory(Subscriber::class, 200)->create();
             $subscribers->each(function (Subscriber $subscriber) use ($fields) {
                 $fields->each(function(Field $field) use ($subscriber) {
                     $subscriber->fields()->attach($field->id, ['value' => $this->generateValidValue($field->type)]);
                 });
             });
-            $counter += 200;
-            echo 'Inserted records: ' . $counter . PHP_EOL;
         }
     }
 }

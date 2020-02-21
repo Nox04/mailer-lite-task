@@ -28,7 +28,7 @@ class SubscriberController extends Controller
     {
         $state = $request->input('state');
         $sorting = json_decode($request->input('sorting'));
-        $search = $request->input('search');
+        $search = json_decode($request->input('search'));
 
         $subscribers = Subscriber::with('fields');
 
